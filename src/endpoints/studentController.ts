@@ -1,7 +1,11 @@
 import { Request, Response } from "express";
 
-export const createStudent = async (req: Request, res: Response) => {}
+export class StudentController {
+    
+    create = async (req: Request, res: Response) => {}
+    
+    requestByName = async (req: Request, res: Response) => {}
+    
+    uptadeClassroom = async (req: Request, res: Response) => {}
 
-export const requestStudentByName = async (req: Request, res: Response) => {}
-
-export const uptadeStudantClassroom = async (req: Request, res: Response) => {}
+}

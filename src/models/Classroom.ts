@@ -1,12 +1,11 @@
 export enum CLASS_MODULE {
-    "CLASS_MODULE_0" = "0",
-    "CLASS_MODULE_1" = "1",
-    "CLASS_MODULE_2" = "2",
-    "CLASS_MODULE_3" = "3",
-    "CLASS_MODULE_4" = "4",
-    "CLASS_MODULE_5" = "5",
-    "CLASS_MODULE_6" = "6",
-
+    CLASS_MODULE_0 = "0",
+    CLASS_MODULE_1 = "1",
+    CLASS_MODULE_2 = "2",
+    CLASS_MODULE_3 = "3",
+    CLASS_MODULE_4 = "4",
+    CLASS_MODULE_5 = "5",
+    CLASS_MODULE_6 = "6",
 }
 
 export interface IClassroomDB {
@@ -19,12 +18,10 @@ export class Classroom {
     constructor(
         private id: string,
         private name: string,
-        // private students: string[] | null,
         private module: CLASS_MODULE
     ) {
         this.id = id;
         this.name = name;
-        // this.students = students;
         this.module = module;
     }
 
@@ -35,10 +32,6 @@ export class Classroom {
     public getName(): string {
         return this.name;
     }
-
-    // public getStudents(): string[] {
-    //     return this.students;
-    // }
 
     public getModule(): CLASS_MODULE {
         return this.module;
@@ -51,10 +44,6 @@ export class Classroom {
     public setName(newName: string) {
         this.name = newName;
     }
-
-    // public setStudents(newStudents: string[]) {
-    //     this.students = newStudents;
-    // }
 
     public setModule(newModule: CLASS_MODULE) {
         this.module = newModule;

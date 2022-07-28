@@ -1,8 +1,8 @@
 import express from 'express'
 import cors from 'cors'
 import { ping } from './endpoints/pingController';
-import { createClassroom, requestActiveClassroom, requestStudents, updateClassroomModule } from './endpoints/classroomController';
-import { createStudent, requestStudentByName, uptadeStudantClassroom } from './endpoints/studentController';
+import { ClassroomController } from './endpoints/ClassroomController';
+import { StudentController } from './endpoints/StudentController';
 
 const app = express();
 
@@ -13,26 +13,29 @@ app.listen(process.env.PORT || 3003, () => {
     console.log(`Server is running on port ${process.env.PORT || 3003}`)
 });
 
+const classroomController = new ClassroomController();
+const studentController = new StudentController();
+
 // Endpoint test
 app.get('/ping', ping);
 
 // Endpoint 1 - Create Classroom
-app.post("/classrooom", createClassroom)
+app.post("/classroom", classroomController.create)
 
 // Endpoint 2 - Request Active Classroom
-app.get("/classroom", requestActiveClassroom)
+app.get("/classroom", classroomController.requestActiveClassroom)
 
 // Endpoint 3 - Change Classroom Module
-app.put("/classroom", updateClassroomModule)
+app.put("/classroom", classroomController.updateModule)
 
 // Endpoint 4 - Create Student
-app.post("/student", createStudent)
+app.post("/student", studentController.create)
 
 // Endpoint 5 - Request Student by name
-app.get("/student", requestStudentByName)
+app.get("/student", studentController.requestByName)
 
 // Endpoint 6 - Change Student Classroom
-app.put("/student", uptadeStudantClassroom)
+app.put("/student", studentController.uptadeClassroom)
 
 // Endpoint 7 - Request Students
-app.get("/classroom/:id/students", requestStudents)
+app.get("/classroom/:id/students", classroomController.requestStudents)

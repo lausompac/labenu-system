@@ -7,8 +7,8 @@ Content-Type: application/json
 
 {
     "name": "Soares",
-    "module": "CLASS_MODULE_0"
+    "module": "0"
 }
 
 ### Endpoint 7 - Request Students
-GET http://localhost:3003/classroom/101/students
+GET http://localhost:3003/classroom/103/students

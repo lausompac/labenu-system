@@ -33,7 +33,7 @@ class Migrations extends BaseDatabase {
             
         CREATE TABLE IF NOT EXISTS ${ClassroomDatabase.TABLE_CLASSROOM} (
             id VARCHAR(255) PRIMARY KEY,
-            name VARCHAR(255) NOT NULL,
+            name VARCHAR(255) NOT NULL UNIQUE,
             module ENUM('0', '1', '2', '3', '4', '5', '6') DEFAULT '0'
         );
 
