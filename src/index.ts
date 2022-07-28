@@ -26,7 +26,7 @@ app.post("/classroom", classroomController.create)
 app.get("/classroom", classroomController.requestActiveClassroom)
 
 // Endpoint 3 - Change Classroom Module
-app.put("/classroom", classroomController.updateModule)
+app.put("/classroom/:id", classroomController.updateModule)
 
 // Endpoint 4 - Create Student
 app.post("/student", studentController.create)
@@ -35,7 +35,7 @@ app.post("/student", studentController.create)
 app.get("/student", studentController.requestByName)
 
 // Endpoint 6 - Change Student Classroom
-app.put("/student", studentController.uptadeClassroom)
+app.put("/student/:id", studentController.updateClassroom)
 
 // Endpoint 7 - Request Students
 app.get("/classroom/:id/students", classroomController.requestStudents)

@@ -25,7 +25,7 @@ export class ClassroomController {
         }
     }
 
-    requestActiveClassroom = async (req: Request, res: Response) => { 
+    requestActiveClassroom = async (req: Request, res: Response) => {
         let errorCode = 400
         try {
 
@@ -33,7 +33,7 @@ export class ClassroomController {
             const classrooms = await classroomDatabase.requestActiveClassroom();
 
             res.status(200).send({ message: "Active classrooms", classrooms });
-            
+
         } catch (error) {
             res.status(errorCode).send({ message: error.message })
         }
@@ -52,6 +52,27 @@ export class ClassroomController {
         }
     }
 
-    updateModule = async (req: Request, res: Response) => { }
+    updateModule = async (req: Request, res: Response) => {
+        let errorCode = 400
+        try {
+            const { id } = req.params;
+            const { module } = req.body;
+
+            if (!id || !module) {
+                throw new Error("Missing id or module")
+            }
+
+            const classroomDatabase = new ClassroomDatabase();
+            const classroom = await classroomDatabase.updateModule(id, module);
+
+            res.status(200).send({ message: "Classroom module updated" });
+
+
+        } catch (error) {
+            res.status(errorCode).send({ message: error.message })
+        }
+
+    }
+
 
 }   

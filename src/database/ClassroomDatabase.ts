@@ -25,6 +25,23 @@ export class ClassroomDatabase extends BaseDatabase {
       return result
    }
 
+   public async updateModule(classroomId: string, module: string) {
+      
+      const checkClassroom = await BaseDatabase
+         .connection(ClassroomDatabase.TABLE_CLASSROOM)
+         .where("id", "=", classroomId)
+         .select()
+
+      if(checkClassroom.length === 0) {
+         throw new Error("Classroom not found")
+      }
+      
+      const result = await BaseDatabase
+         .connection(ClassroomDatabase.TABLE_CLASSROOM)
+         .where("id", "=", classroomId)
+         .update({module})
+   }
+
    public async requestStudents(classroomId: string) {
       const result = await BaseDatabase
          .connection(ClassroomDatabase.TABLE_CLASSROOM)

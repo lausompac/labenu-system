@@ -22,14 +22,8 @@ export class Student {
         private name: string,
         private email: string,
         private birthDate: Date,
-        private classroom: null | string
-    ) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.birthDate = birthDate;
-        this.classroom = classroom;
-    }
+        private classroom_id: null | string
+    ) {}
 
     public getId(){
         return this.id;
@@ -48,7 +42,7 @@ export class Student {
     }
 
     public getClassroom(){
-        return this.classroom;
+        return this.classroom_id;
     }
 
     public setId(newId: string){
@@ -68,7 +62,7 @@ export class Student {
     }
 
     public setClassroom(newClassroom: null | string){
-        this.classroom = newClassroom;
+        this.classroom_id = newClassroom;
     }
 
 }

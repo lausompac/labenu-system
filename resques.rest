@@ -13,5 +13,36 @@ Content-Type: application/json
 ### Endpoint 2 - Request Active Classroom
 GET http://localhost:3003/classroom
 
+### Endpoint 3 - Change Classroom Module
+PUT http://localhost:3003/classroom/102
+Content-Type: application/json
+
+{
+    "module": "1"
+}
+
+### Endpoint 4 - Create Student
+POST http://localhost:3003/student
+Content-Type: application/json
+
+{
+    "name": "Dulce Maria",
+    "email": "dulcinha@gmail.com",
+    "birthDate": "2019/11/17",
+    "classroom_id": null
+}
+
+### Endpoint 5 - Request Student by Name
+GET http://localhost:3003/student/?name=Laura
+
+### Endpoint 6 - Change Student Classroom
+PUT http://localhost:3003/student/2
+Content-Type: application/json
+
+{
+    "classroom_id": "101"
+}
+
+
 ### Endpoint 7 - Request Students
 GET http://localhost:3003/classroom/103/students
