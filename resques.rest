@@ -1,2 +1,14 @@
 ### Endpoint de teste 
 GET http://localhost:3003/ping
+
+### Endpoint 1 - Create Classroom
+POST http://localhost:3003/classroom
+Content-Type: application/json
+
+{
+    "name": "Soares",
+    "module": "CLASS_MODULE_0"
+}
+
+### Endpoint 7 - Request Students
+GET http://localhost:3003/classroom/101/students

@@ -35,4 +35,4 @@ app.get("/student", requestStudentByName)
 app.put("/student", uptadeStudantClassroom)
 
 // Endpoint 7 - Request Students
-app.get("/students", requestStudents)
+app.get("/classroom/:id/students", requestStudents)

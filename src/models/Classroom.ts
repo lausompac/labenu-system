@@ -19,8 +19,45 @@ export class Classroom {
     constructor(
         private id: string,
         private name: string,
-        private students: string[],
+        // private students: string[] | null,
         private module: CLASS_MODULE
-    ) {}
+    ) {
+        this.id = id;
+        this.name = name;
+        // this.students = students;
+        this.module = module;
+    }
+
+    public getId(): string {
+        return this.id;
+    }
+
+    public getName(): string {
+        return this.name;
+    }
+
+    // public getStudents(): string[] {
+    //     return this.students;
+    // }
+
+    public getModule(): CLASS_MODULE {
+        return this.module;
+    }
+
+    public setId(newId: string) {
+        this.id = newId;
+    }
+
+    public setName(newName: string) {
+        this.name = newName;
+    }
+
+    // public setStudents(newStudents: string[]) {
+    //     this.students = newStudents;
+    // }
+
+    public setModule(newModule: CLASS_MODULE) {
+        this.module = newModule;
+    }
 
 }
