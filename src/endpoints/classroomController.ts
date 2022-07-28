@@ -25,7 +25,19 @@ export class ClassroomController {
         }
     }
 
-    requestActiveClassroom = async (req: Request, res: Response) => { }
+    requestActiveClassroom = async (req: Request, res: Response) => { 
+        let errorCode = 400
+        try {
+
+            const classroomDatabase = new ClassroomDatabase();
+            const classrooms = await classroomDatabase.requestActiveClassroom();
+
+            res.status(200).send({ message: "Active classrooms", classrooms });
+            
+        } catch (error) {
+            res.status(errorCode).send({ message: error.message })
+        }
+    }
 
     requestStudents = async (req: Request, res: Response) => {
         let errorCode = 400;

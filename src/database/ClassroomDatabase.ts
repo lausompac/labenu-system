@@ -16,6 +16,15 @@ export class ClassroomDatabase extends BaseDatabase {
          })
    }
 
+   public async requestActiveClassroom() {
+      const result = await BaseDatabase
+         .connection(ClassroomDatabase.TABLE_CLASSROOM)
+         .where("module", "!=", "0")
+         .select()
+
+      return result
+   }
+
    public async requestStudents(classroomId: string) {
       const result = await BaseDatabase
          .connection(ClassroomDatabase.TABLE_CLASSROOM)

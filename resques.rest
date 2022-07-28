@@ -10,5 +10,8 @@ Content-Type: application/json
     "module": "0"
 }
 
+### Endpoint 2 - Request Active Classroom
+GET http://localhost:3003/classroom
+
 ### Endpoint 7 - Request Students
 GET http://localhost:3003/classroom/103/students
