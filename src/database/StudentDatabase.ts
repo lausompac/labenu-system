@@ -41,9 +41,10 @@ export class StudentDatabase extends BaseDatabase {
             throw new Error("Student not found")
         }
 
+
         const result = await BaseDatabase
             .connection(StudentDatabase.TABLE_STUDENT)
-            .where("id", "=", classroom_id)
+            .where("id", "=", id)
             .update({classroom_id})
     }
 }
