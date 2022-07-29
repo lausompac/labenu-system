@@ -38,6 +38,10 @@ export class StudentController {
                 res.status(200).send({ students: students });
             }
 
+            const studentDatabase = new StudentDatabase();
+            const students = await studentDatabase.requestByName(null);
+            res.status(200).send({ students: students });
+
         } catch (error) {
             res.status(errorCode).send({ message: error.message })
         }

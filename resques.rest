@@ -33,7 +33,7 @@ Content-Type: application/json
 }
 
 ### Endpoint 5 - Request Student by Name
-GET http://localhost:3003/student/?name=Laura
+GET http://localhost:3003/student/?name=Luan
 
 ### Endpoint 6 - Change Student Classroom
 PUT http://localhost:3003/student/2

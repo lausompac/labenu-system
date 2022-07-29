@@ -9,6 +9,22 @@ export class ClassroomController {
         try {
             const { name, module } = req.body;
 
+            if(!name) {
+                throw new Error("Missing parameters")
+            }
+
+            if(name < 3 || name > 15) {
+                throw new Error("Name must be between 3 and 15 characters")
+            }
+
+            if(module < 0 || module > 6) {
+                throw new Error("Module must be between 0 and 6")
+            }
+
+            
+
+
+
             const classroom = new Classroom(
                 Date.now().toString(), //criar lógica para seguir o padrão de id
                 name,
