@@ -6,7 +6,7 @@ POST http://localhost:3003/classroom
 Content-Type: application/json
 
 {
-    "name": "Veloso"
+    "name": "Soares"
 }
 
 ### Endpoint 2 - Request Active Classroom
@@ -25,14 +25,14 @@ POST http://localhost:3003/student
 Content-Type: application/json
 
 {
-    "name": "Dulce Maria",
+    "name": "Dulce",
     "email": "dulcinha@gmail.com",
     "birthDate": "2019/11/17",
     "classroom_id": null
 }
 
 ### Endpoint 5 - Request Student by Name
-GET http://localhost:3003/student/?name=Luan
+GET http://localhost:3003/student/?name=Dulce
 
 ### Endpoint 6 - Change Student Classroom
 PUT http://localhost:3003/student/2

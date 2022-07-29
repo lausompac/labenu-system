@@ -5,6 +5,13 @@ import { BaseDatabase } from "./BaseDatabase";
 export class StudentDatabase extends BaseDatabase {
     public static TABLE_STUDENT = "Labe_Student";
 
+    public async requestStudentLastId() {
+        const result = await BaseDatabase
+            .getLastId(StudentDatabase.TABLE_STUDENT)
+
+        return result
+    }
+
     public async create(student: Student) {
         await BaseDatabase
             .connection(StudentDatabase.TABLE_STUDENT)

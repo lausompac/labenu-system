@@ -16,14 +16,14 @@ export abstract class BaseDatabase {
       },
    });
 
-   //  função generica de ultimo id
+   //  polimorfismo de lastId pra gerar id's sequenciais
    protected static async getLastId(table: string) {
       const ids = await BaseDatabase
          .connection(table)
          .select("id")
 
-      const lastId = ids.map((id) => id.id)
-      const lastIdNumber = parseInt(lastId[lastId.length - 1])
+      const lastId = ids.map((id) => Number(id.id)).sort((a, b) => a - b)
+      const lastIdNumber = lastId[lastId.length - 1]
 
       return lastIdNumber
    }

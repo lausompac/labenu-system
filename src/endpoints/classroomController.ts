@@ -20,7 +20,7 @@ export class ClassroomController {
             const classroomDatabase = new ClassroomDatabase();
 
             const newId = await classroomDatabase
-            .requestClassLastId()
+                .requestClassLastId()
 
             const classroom = new Classroom(
                 (newId + 1).toString(),

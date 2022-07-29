@@ -8,20 +8,19 @@ export class ClassroomDatabase extends BaseDatabase {
 
    public async requestClassLastId() {
       const result = await BaseDatabase
-      .getLastId(ClassroomDatabase.TABLE_CLASSROOM)
+         .getLastId(ClassroomDatabase.TABLE_CLASSROOM)
 
       return result
-
    }
 
    public async create(classroom: Classroom) {
-      
+
       await BaseDatabase
          .connection(ClassroomDatabase.TABLE_CLASSROOM)
          .insert({
             id: classroom.getId(),
             name: classroom.getName(),
-            module: classroom.getModule()        
+            module: classroom.getModule()
          })
    }
 
@@ -35,20 +34,20 @@ export class ClassroomDatabase extends BaseDatabase {
    }
 
    public async updateModule(classroomId: string, module: string) {
-      
+
       const checkClassroom = await BaseDatabase
          .connection(ClassroomDatabase.TABLE_CLASSROOM)
          .where("id", "=", classroomId)
          .select()
 
-      if(checkClassroom.length === 0) {
+      if (checkClassroom.length === 0) {
          throw new Error("Classroom not found")
       }
-      
+
       const result = await BaseDatabase
          .connection(ClassroomDatabase.TABLE_CLASSROOM)
          .where("id", "=", classroomId)
-         .update({module})
+         .update({ module })
    }
 
    public async requestStudents(classroomId: string) {

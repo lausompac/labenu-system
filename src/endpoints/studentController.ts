@@ -9,18 +9,22 @@ export class StudentController {
         try {
             const { name, email, birthDate, classroom_id } = req.body;
 
+            const studentDatabase = new StudentDatabase();
+
+            const newId = await studentDatabase
+                .requestStudentLastId();
+
             const student = new Student(
-                Date.now().toString(), //criar lógica para seguir o padrão de id
+                (newId + 1).toString(),
                 name,
                 email,
                 birthDate,
                 classroom_id,
             )
 
-            const studentDatabase = new StudentDatabase();
             await studentDatabase.create(student);
 
-            res.status(200).send({ message: "Student created" });
+            res.status(200).send({ message: "Student created", student });
 
         } catch (error) {
             res.status(errorCode).send({ message: error.message });
