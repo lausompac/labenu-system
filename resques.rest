@@ -6,8 +6,7 @@ POST http://localhost:3003/classroom
 Content-Type: application/json
 
 {
-    "name": "Soares",
-    "module": "0"
+    "name": "Veloso"
 }
 
 ### Endpoint 2 - Request Active Classroom

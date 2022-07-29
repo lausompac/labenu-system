@@ -16,4 +16,16 @@ export abstract class BaseDatabase {
       },
    });
 
+   //  função generica de ultimo id
+   protected static async getLastId(table: string) {
+      const ids = await BaseDatabase
+         .connection(table)
+         .select("id")
+
+      const lastId = ids.map((id) => id.id)
+      const lastIdNumber = parseInt(lastId[lastId.length - 1])
+
+      return lastIdNumber
+   }
+
 }

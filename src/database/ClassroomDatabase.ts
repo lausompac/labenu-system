@@ -6,7 +6,16 @@ import { StudentDatabase } from "./StudentDatabase";
 export class ClassroomDatabase extends BaseDatabase {
    public static TABLE_CLASSROOM = "Labe_Classroom"
 
+   public async requestClassLastId() {
+      const result = await BaseDatabase
+      .getLastId(ClassroomDatabase.TABLE_CLASSROOM)
+
+      return result
+
+   }
+
    public async create(classroom: Classroom) {
+      
       await BaseDatabase
          .connection(ClassroomDatabase.TABLE_CLASSROOM)
          .insert({
