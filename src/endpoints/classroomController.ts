@@ -7,7 +7,7 @@ export class ClassroomController {
         let errorCode = 400;
         try {
             const { name } = req.body;
-
+            
             if (!name) {
                 throw new Error("Name is required")
             }
