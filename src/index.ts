@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import { ClassroomController } from './endpoints/classroomController';
 import { StudentController } from './endpoints/studentController';
+import { HomeController } from './endpoints/homeController';
 
 const app = express();
 
@@ -14,6 +15,10 @@ app.listen(process.env.PORT || 3003, () => {
 
 const classroomController = new ClassroomController();
 const studentController = new StudentController();
+const homeController = new HomeController();
+
+// Inicial page
+app.get("/", homeController.homePage);
 
 // Endpoint 1 - Create Classroom
 app.post("/classroom", classroomController.create)
