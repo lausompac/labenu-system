@@ -65,8 +65,6 @@ export const students: IStudentDB[] = [
         birthDate: new Date("2004/04/26"),
         classroom_id: "101",
     }
-    //pensar num tratamento pra nome completo
-
 ]
 
 export const classrooms: IClassroomDB[] = [
@@ -85,7 +83,6 @@ export const classrooms: IClassroomDB[] = [
         name: "Costa",
         module: CLASS_MODULE.CLASS_MODULE_1,
     }
-
 ]
 
 export const hobbies: IHobbiesDB[] = [
@@ -105,7 +102,6 @@ export const hobbies: IHobbiesDB[] = [
         id: "204",
         title: "Desenhar"
     }
-
 ]
 
 export const studentsHobbies: IStudentsHobbiesDB[] = [

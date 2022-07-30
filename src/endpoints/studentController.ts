@@ -60,7 +60,6 @@ export class StudentController {
             }
 
             res.status(200).send({ message: "Student created", student });
-
         } catch (error) {
             res.status(errorCode).send({ message: error.message });
         }
@@ -83,8 +82,8 @@ export class StudentController {
 
             const studentDatabase = new StudentDatabase();
             const students = await studentDatabase.requestByName(null);
-            res.status(200).send({ students: students });
 
+            res.status(200).send({ students: students });
         } catch (error) {
             res.status(errorCode).send({ message: error.message })
         }
@@ -108,10 +107,8 @@ export class StudentController {
             const student = await studentDatabase.updateClassroom(id, classroom_id);
 
             res.status(200).send({ message: "Classroom updated" });
-
         } catch (error) {
             res.status(errorCode).send({ message: error.message });
         }
     }
-
 }

@@ -19,7 +19,7 @@ export class Classroom {
         private id: string,
         private name: string,
         private module: CLASS_MODULE
-    ) {}
+    ) { }
 
     public getId(): string {
         return this.id;
@@ -44,5 +44,4 @@ export class Classroom {
     public setModule(newModule: CLASS_MODULE) {
         this.module = newModule;
     }
-
 }

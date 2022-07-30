@@ -64,6 +64,5 @@ export class Student {
     public setClassroom(newClassroom: null | string) {
         this.classroom_id = newClassroom;
     }
-
 }
 

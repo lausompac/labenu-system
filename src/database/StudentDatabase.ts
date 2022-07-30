@@ -8,16 +8,13 @@ export class StudentDatabase extends BaseDatabase {
     public static TABLE_STUDENT_HOBBIES = "Labe_Students_Hobbies";
 
     public async requestStudentLastId() {
-
         const result = await BaseDatabase
             .getLastId(StudentDatabase.TABLE_STUDENT)
 
         return result
     }
 
-
     public async create(student: Student) {
-
         await BaseDatabase
             .connection(StudentDatabase.TABLE_STUDENT)
             .insert({
@@ -27,11 +24,9 @@ export class StudentDatabase extends BaseDatabase {
                 birthDate: student.getBirthDate(),
                 classroom_id: student.getClassroom(),
             })
-
     }
 
     public async requestByName(name: string | null = null) {
-
         if (name) {
             const checkStudent = await BaseDatabase
                 .connection(StudentDatabase.TABLE_STUDENT)
@@ -54,7 +49,6 @@ export class StudentDatabase extends BaseDatabase {
     }
 
     public async createHobby(student: Student, hobby: IHobbiesDB) {
-
         const checkHobby = await BaseDatabase
             .connection(StudentDatabase.TABLE_HOBBIES)
             .select()
@@ -79,7 +73,6 @@ export class StudentDatabase extends BaseDatabase {
                 })
 
         } else {
-
             const newStudentHobby = await BaseDatabase
                 .connection(StudentDatabase.TABLE_STUDENT_HOBBIES)
                 .insert({
@@ -87,11 +80,9 @@ export class StudentDatabase extends BaseDatabase {
                     hobby_id: checkHobby[0].id,
                 })
         }
-
     }
 
     public async updateClassroom(id: string, classroom_id: string) {
-
         const checkStudent = await BaseDatabase
             .connection(StudentDatabase.TABLE_STUDENT)
             .where("id", "=", id)

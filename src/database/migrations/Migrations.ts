@@ -76,7 +76,6 @@ class Migrations extends BaseDatabase {
         await BaseDatabase
             .connection(TABLE_STUDENTS_HOBBIES)
             .insert(studentsHobbies)
-
     }
 }
 

@@ -2,7 +2,6 @@ import { Classroom } from "../models/Classroom";
 import { BaseDatabase } from "./BaseDatabase";
 import { StudentDatabase } from "./StudentDatabase";
 
-
 export class ClassroomDatabase extends BaseDatabase {
    public static TABLE_CLASSROOM = "Labe_Classroom"
 
@@ -14,7 +13,6 @@ export class ClassroomDatabase extends BaseDatabase {
    }
 
    public async create(classroom: Classroom) {
-
       await BaseDatabase
          .connection(ClassroomDatabase.TABLE_CLASSROOM)
          .insert({
@@ -34,7 +32,6 @@ export class ClassroomDatabase extends BaseDatabase {
    }
 
    public async updateModule(classroomId: string, module: string) {
-
       const checkClassroom = await BaseDatabase
          .connection(ClassroomDatabase.TABLE_CLASSROOM)
          .where("id", "=", classroomId)
@@ -59,6 +56,5 @@ export class ClassroomDatabase extends BaseDatabase {
 
 
       return result
-
    }
 }
