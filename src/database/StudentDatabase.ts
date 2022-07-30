@@ -4,6 +4,7 @@ import { BaseDatabase } from "./BaseDatabase";
 export class StudentDatabase extends BaseDatabase {
     public static TABLE_STUDENT = "Labe_Student";
     public static TABLE_HOBBIES = "Labe_Hobbies";
+    public static TABLE_CLASSROOM = "Labe_Classroom"
     public static TABLE_STUDENT_HOBBIES = "Labe_Students_Hobbies";
 
     public async requestStudentLastId() {
@@ -29,8 +30,6 @@ export class StudentDatabase extends BaseDatabase {
 
     }
 
-
-
     public async requestByName(name: string | null = null) {
 
         if (name) {
@@ -49,6 +48,7 @@ export class StudentDatabase extends BaseDatabase {
         const students = await BaseDatabase
             .connection(StudentDatabase.TABLE_STUDENT)
             .select()
+            .orderBy("name")
 
         return students
     }
@@ -88,11 +88,7 @@ export class StudentDatabase extends BaseDatabase {
                 })
         }
 
-
-
     }
-
-
 
     public async updateClassroom(id: string, classroom_id: string) {
 
@@ -105,6 +101,18 @@ export class StudentDatabase extends BaseDatabase {
             throw new Error("Student not found")
         }
 
+        if (checkStudent[0].classroom_id === classroom_id) {
+            throw new Error("Student already in this classroom")
+        }
+
+        const checkClassroom = await BaseDatabase
+            .connection(StudentDatabase.TABLE_CLASSROOM)
+            .where("id", "=", classroom_id)
+            .select()
+
+        if (checkClassroom.length === 0) {
+            throw new Error("Classroom not found")
+        }
 
         const result = await BaseDatabase
             .connection(StudentDatabase.TABLE_STUDENT)

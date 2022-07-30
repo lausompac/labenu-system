@@ -51,19 +51,6 @@ export class ClassroomController {
         }
     }
 
-    requestStudents = async (req: Request, res: Response) => {
-        let errorCode = 400;
-        try {
-            const classroomId = req.params.id
-            const classroomDatabase = new ClassroomDatabase();
-            const students = await classroomDatabase.requestStudents(classroomId);
-
-            res.status(200).send({ students: students });
-        } catch (error) {
-            res.status(errorCode).send({ message: error.message });
-        }
-    }
-
     updateModule = async (req: Request, res: Response) => {
         let errorCode = 400
         try {
@@ -72,6 +59,10 @@ export class ClassroomController {
 
             if (!id || !module) {
                 throw new Error("Missing id or module")
+            }
+
+            if(module < 0 || module > 6) {
+                throw new Error("Module must be between 0 and 6")
             }
 
             const classroomDatabase = new ClassroomDatabase();
@@ -85,6 +76,27 @@ export class ClassroomController {
         }
 
     }
+
+    requestStudents = async (req: Request, res: Response) => {
+        let errorCode = 400;
+        try {
+            const classroomId = req.params.id
+
+            if (!classroomId) {
+                throw new Error("Classroom id is required")
+            }
+
+            const classroomDatabase = new ClassroomDatabase();
+            const students = await classroomDatabase.requestStudents(classroomId);
+
+
+            res.status(200).send({ message: "Students:", students });
+        } catch (error) {
+            res.status(errorCode).send({ message: error.message });
+        }
+    }
+
+
 
 
 }   

@@ -10,6 +10,34 @@ export class StudentController {
             const { name, email, birthDate, classroom_id } = req.body;
             const hobbies = req.body.hobbies;
 
+            if (!name || !email || !birthDate) {
+                throw new Error("Missing parameters");
+            }
+
+            if (typeof name !== "string" || typeof email !== "string") {
+                throw new Error("Invalid parameters");
+            }
+
+            if (!hobbies) {
+                throw new Error("Missing hobbies");
+            }
+
+            if (!email.includes("@")) {
+                throw new Error("Invalid email");
+            }
+
+            if (birthDate) {
+                function isOver18(birthDate: string) {
+                    const date = new Date(birthDate);
+                    const currentDate = new Date();
+                    const age = currentDate.getFullYear() - date.getFullYear();
+                    return age >= 18;
+                }
+                if (!isOver18(birthDate)) {
+                    throw new Error("Student is under 18 years old");
+                }
+            }
+
             const studentDatabase = new StudentDatabase();
 
             const newStudentId = await studentDatabase
@@ -24,7 +52,6 @@ export class StudentController {
             )
 
             await studentDatabase.create(student);
-                
 
             for (let i = 0; i < hobbies.length; i++) {
                 const hobby = hobbies[i];
@@ -43,6 +70,10 @@ export class StudentController {
         let errorCode = 400
         try {
             const name = req.query.name as string
+
+            if (typeof name !== "string") {
+                throw new Error("Name must be a string");
+            }
 
             if (name) {
                 const studentDatabase = new StudentDatabase();
@@ -67,6 +98,10 @@ export class StudentController {
 
             if (!id || !classroom_id) {
                 throw new Error("Missing id or classroom_id")
+            }
+
+            if (typeof id !== "string" || typeof classroom_id !== "string") {
+                throw new Error("Invalid id or classroom_id")
             }
 
             const studentDatabase = new StudentDatabase();

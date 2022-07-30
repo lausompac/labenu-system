@@ -16,7 +16,7 @@ export abstract class BaseDatabase {
       },
    });
 
-   //  polimorfismo de lastId pra gerar id's sequenciais
+   // gerar id's sequenciais
    protected static async getLastId(table: string) {
       const ids = await BaseDatabase
          .connection(table)
