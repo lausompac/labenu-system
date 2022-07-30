@@ -1,39 +1,19 @@
-import { Hobby, Student } from "../models/Student";
+import { IHobbiesDB, Student } from "../models/Student";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class StudentDatabase extends BaseDatabase {
     public static TABLE_STUDENT = "Labe_Student";
     public static TABLE_HOBBIES = "Labe_Hobbies";
-    public static TABLE_STUDENT_HOBBIES = "Labe_Student_Hobbies";
+    public static TABLE_STUDENT_HOBBIES = "Labe_Students_Hobbies";
 
     public async requestStudentLastId() {
+
         const result = await BaseDatabase
             .getLastId(StudentDatabase.TABLE_STUDENT)
 
         return result
     }
 
-    public async createHobby(hobby: Hobby) {
-
-            const checkHobby = await BaseDatabase
-                .connection(StudentDatabase.TABLE_HOBBIES)
-                .select()
-                .where("title", "=", `${hobby}`)
-
-            if (checkHobby.length === 0) {
-                const newId = await BaseDatabase
-                    .getLastId(StudentDatabase.TABLE_HOBBIES)
-    
-                const newHobby = await BaseDatabase
-                    .connection(StudentDatabase.TABLE_HOBBIES)
-                    .insert({
-                        id: newId + 1,
-                        title: hobby,
-                    })
-                console.log(newHobby)
-            }
-
-    }
 
     public async create(student: Student) {
 
@@ -48,6 +28,8 @@ export class StudentDatabase extends BaseDatabase {
             })
 
     }
+
+
 
     public async requestByName(name: string | null = null) {
 
@@ -70,6 +52,47 @@ export class StudentDatabase extends BaseDatabase {
 
         return students
     }
+
+    public async createHobby(student: Student, hobby: IHobbiesDB) {
+
+        const checkHobby = await BaseDatabase
+            .connection(StudentDatabase.TABLE_HOBBIES)
+            .select()
+            .where("title", "=", `${hobby}`)
+
+        if (checkHobby.length === 0) {
+            const newId = await BaseDatabase
+                .getLastId(StudentDatabase.TABLE_HOBBIES)
+
+            const newHobby = await BaseDatabase
+                .connection(StudentDatabase.TABLE_HOBBIES)
+                .insert({
+                    id: newId + 1,
+                    title: hobby,
+                })
+
+            const newStudentHobby = await BaseDatabase
+                .connection(StudentDatabase.TABLE_STUDENT_HOBBIES)
+                .insert({
+                    student_id: student.getId(),
+                    hobby_id: newId + 1,
+                })
+
+        } else {
+
+            const newStudentHobby = await BaseDatabase
+                .connection(StudentDatabase.TABLE_STUDENT_HOBBIES)
+                .insert({
+                    student_id: student.getId(),
+                    hobby_id: checkHobby[0].id,
+                })
+        }
+
+
+
+    }
+
+
 
     public async updateClassroom(id: string, classroom_id: string) {
 

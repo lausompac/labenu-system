@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { StudentDatabase } from "../database/StudentDatabase";
-import { Hobby, Student } from "../models/Student";
+import { Student } from "../models/Student";
 
 export class StudentController {
 
@@ -24,12 +24,13 @@ export class StudentController {
             )
 
             await studentDatabase.create(student);
+                
 
             for (let i = 0; i < hobbies.length; i++) {
                 const hobby = hobbies[i];
-                await studentDatabase.createHobby(hobby);
+
+                await studentDatabase.createHobby(student, hobby);
             }
-                      
 
             res.status(200).send({ message: "Student created", student });
 

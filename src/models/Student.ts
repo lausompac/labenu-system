@@ -16,29 +16,6 @@ export interface IStudentsHobbiesDB {
     hobby_id: string;
 }
 
-export class Hobby {
-    constructor(
-        private id: string,
-        private title: string
-    ) {}
-
-    public getId(): string {
-        return this.id;
-    }
-
-    public getTitle(): string {
-        return this.title;
-    }
-
-    public setId(newId: string) {
-        this.id = newId;
-    }
-
-    public setTitle(newTitle: string) {
-        this.title = newTitle;
-    }
-}
-
 export class Student {
     constructor(
         private id: string,

@@ -31,7 +31,7 @@ Content-Type: application/json
     "classroom_id": null,
     "hobbies": [
         "Brincar",
-        "Futebol",
+        "Andar de Bicicleta",
         "Cantar"
     ]
 }
@@ -50,3 +50,6 @@ Content-Type: application/json
 
 ### Endpoint 7 - Request Students
 GET http://localhost:3003/classroom/103/students
+
+
+//FALTA CRIAR RELAÇÃO ENTRE STUDENT E CLASSROOM
