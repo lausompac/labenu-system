@@ -28,7 +28,12 @@ Content-Type: application/json
     "name": "Dulce",
     "email": "dulcinha@gmail.com",
     "birthDate": "2019/11/17",
-    "classroom_id": null
+    "classroom_id": null,
+    "hobbies": [
+        "Brincar",
+        "Futebol",
+        "Cantar"
+    ]
 }
 
 ### Endpoint 5 - Request Student by Name

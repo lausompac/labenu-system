@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { StudentDatabase } from "../database/StudentDatabase";
-import { Student } from "../models/Student";
+import { Hobby, Student } from "../models/Student";
 
 export class StudentController {
 
@@ -8,14 +8,15 @@ export class StudentController {
         let errorCode = 400;
         try {
             const { name, email, birthDate, classroom_id } = req.body;
+            const hobbies = req.body.hobbies;
 
             const studentDatabase = new StudentDatabase();
 
-            const newId = await studentDatabase
+            const newStudentId = await studentDatabase
                 .requestStudentLastId();
 
             const student = new Student(
-                (newId + 1).toString(),
+                (newStudentId + 1).toString(),
                 name,
                 email,
                 birthDate,
@@ -23,6 +24,12 @@ export class StudentController {
             )
 
             await studentDatabase.create(student);
+
+            for (let i = 0; i < hobbies.length; i++) {
+                const hobby = hobbies[i];
+                await studentDatabase.createHobby(hobby);
+            }
+                      
 
             res.status(200).send({ message: "Student created", student });
 
