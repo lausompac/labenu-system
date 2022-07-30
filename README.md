@@ -19,10 +19,8 @@ O sistema conta com recursos que envolvem o gerenciamento de cadastro de turmas,
 Informações das turmas:
 
 - Id da turma;
-- 
-
-
-
+- Nome;
+- Módulo (de 0 à 6 - sendo que turmas no módulo zero são as que não iniciaram ainda)
 
 Informações dos estudantes:
 
@@ -31,6 +29,7 @@ Informações dos estudantes:
 - E-mail;
 - Aniversário;
 - Hobbies;
+- Classe em que está matriculado;
 
 
 ## 🛠 Tecnologias utilizadas
