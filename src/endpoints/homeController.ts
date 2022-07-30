@@ -17,9 +17,9 @@ export class HomeController {
                 + "<li>/classroom/:id/students - Endpoint 7 - Request Students</li>"
                 + "</ul>"
                 + "<h3>Acess the documentation at:</h3>"
-                + "<a href=https://documenter.getpostman.com/view/15825788/UzdzT5bK</a>"
+                + "<a href='https://documenter.getpostman.com/view/15825788/UzdzT5bK'>Postman</a>"
                 + "<h3>Source code at:</h3>"
-                + "<a href=https://github.com/lausompac/labenu-system</a>"
+                + "<a href='https://github.com/lausompac/labenu-system'>GitHub</a>"
                 + "<p> Thank you for using my system! </p>")
                 res.end()
                         
