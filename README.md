@@ -8,6 +8,10 @@ Projeto de backend - Módulo 5 - Labenu
 
 https://documenter.getpostman.com/view/15825788/UzdzT5bK
 
+## 🚀 Deploy
+
+https://lau-labenu-system.herokuapp.com/
+
 ## ⚙️ Funcionalidades do Projeto
 
 O sistema conta com recursos que envolvem o gerenciamento de cadastro de turmas, cadastro de estudantes e modificações internas. 
