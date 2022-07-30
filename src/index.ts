@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
-import { ClassroomController } from './endpoints/ClassroomController';
-import { StudentController } from './endpoints/StudentController';
+import { ClassroomController } from './endpoints/classroomController';
+import { StudentController } from './endpoints/studentController';
 
 const app = express();
 

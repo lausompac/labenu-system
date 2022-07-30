@@ -70,10 +70,6 @@ export class StudentController {
         try {
             const name = req.query.name as string
 
-            if (typeof name !== "string") {
-                throw new Error("Name must be a string");
-            }
-
             if (name) {
                 const studentDatabase = new StudentDatabase();
                 const students = await studentDatabase.requestByName(name);
