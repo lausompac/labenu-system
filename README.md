@@ -1,6 +1,6 @@
 # 🎓 Labenu System  
 
-Sistema de organização educacional
+Sistema de gerenciamento para organização educacional
 
 Projeto de backend - Módulo 5 - Labenu
 
