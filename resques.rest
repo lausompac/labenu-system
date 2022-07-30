@@ -1,2 +1,50 @@
-### Endpoint de teste 
-GET http://localhost:3003/ping
+### Endpoint 1 - Create Classroom
+POST http://localhost:3003/classroom
+Content-Type: application/json
+
+{
+    "name": "Soares"
+}
+
+### Endpoint 2 - Request Active Classroom
+GET http://localhost:3003/classroom
+
+### Endpoint 3 - Change Classroom Module
+PUT http://localhost:3003/classroom/102
+Content-Type: application/json
+
+{
+    "module": "1"
+}
+
+### Endpoint 4 - Create Student
+POST http://localhost:3003/student
+Content-Type: application/json
+
+{
+    "name": "Winny",
+    "email": "winny@gmail.com",
+    "birthDate": "1991/04/22",
+    "classroom_id": null,
+    "hobbies": [
+        "Cantar",
+        "Sair com amigos",
+        "Ler"
+    ]
+}
+
+### Endpoint 5 - Request Student by Name
+GET http://localhost:3003/student/?name=
+
+### Endpoint 6 - Change Student Classroom
+PUT http://localhost:3003/student/2
+Content-Type: application/json
+
+{
+    "classroom_id": "101"
+}
+
+
+### Endpoint 7 - Request Students
+GET http://localhost:3003/classroom/103/students
+
